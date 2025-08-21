@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between mb-3">
+  <h3>Ordens de Serviço</h3>
+  <a href="{{ url_for('add') }}" class="btn btn-success">Nova Ordem</a>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Cliente</th>
+      <th>Serviço</th>
+      <th>Valor</th>
+      <th>Status</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for o in ordens %}
+    <tr>
+      <td>{{ o[0] }}</td>
+      <td>{{ o[1] }}</td>
+      <td>{{ o[2] }}</td>
+      <td>R$ {{ o[3] }}</td>
+      <td>{{ o[4] }}</td>
+      <td>
+        <a href="{{ url_for('edit', ordem_id=o[0]) }}" class="btn btn-sm btn-primary">Editar</a>
+        <a href="{{ url_for('delete', ordem_id=o[0]) }}" class="btn btn-sm btn-danger">Excluir</a>
+        <a href="{{ url_for('gerar_pdf', ordem_id=o[0]) }}" class="btn btn-sm btn-secondary">PDF</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

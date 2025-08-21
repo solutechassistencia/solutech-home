@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Editar Ordem de Serviço</h3>
+<form method="post">
+  <div class="mb-3">
+    <label>Cliente</label>
+    <input type="text" name="cliente" class="form-control" value="{{ ordem[1] }}" required>
+  </div>
+  <div class="mb-3">
+    <label>Serviço</label>
+    <input type="text" name="servico" class="form-control" value="{{ ordem[2] }}" required>
+  </div>
+  <div class="mb-3">
+    <label>Valor</label>
+    <input type="number" step="0.01" name="valor" class="form-control" value="{{ ordem[3] }}" required>
+  </div>
+  <div class="mb-3">
+    <label>Status</label>
+    <select name="status" class="form-control">
+      <option {% if ordem[4]=='Aberta' %}selected{% endif %}>Aberta</option>
+      <option {% if ordem[4]=='Em andamento' %}selected{% endif %}>Em andamento</option>
+      <option {% if ordem[4]=='Finalizada' %}selected{% endif %}>Finalizada</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-success">Salvar</button>
+</form>
+{% endblock %}
