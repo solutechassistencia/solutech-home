@@ -1,3 +1,7 @@
+git add requirements.txt
+git commit -m "Adiciona gunicorn para deploy Render"
+git push origin main
+
 services:
   - type: web
     name: solutech-home
@@ -6,3 +10,4 @@ services:
     buildCommand: "pip install -r requirements.txt"
     startCommand: "gunicorn app:app"
     autoDeploy: true
+
