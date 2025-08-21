@@ -1,13 +1,12 @@
-git add requirements.txt
-git commit -m "Adiciona gunicorn para deploy Render"
-git push origin main
-
+# Exported from Render on 2025-08-21T22:07:36Z
 services:
-  - type: web
-    name: solutech-home
-    env: python
-    plan: free
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn app:app"
-    autoDeploy: true
-
+- type: web
+  name: solutech-home
+  runtime: python
+  repo: https://github.com/solutechassistencia/solutech-home
+  plan: free
+  region: oregon
+  buildCommand: pip install -r requirements.txt
+  startCommand: gunicorn your_application.wsgi
+  autoDeployTrigger: true
+version: "1"
